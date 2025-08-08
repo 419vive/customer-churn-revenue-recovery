@@ -1,0 +1,215 @@
+# Olist Analytics Enterprise Configuration
+
+# Environment settings
+environment: development  # development, staging, production
+
+# Database configuration
+database:
+  host: localhost
+  port: 5432
+  name: olist_analytics
+  user: postgres
+  password: ""  # Set via environment variable DB_PASSWORD
+  pool_size: 10
+  max_overflow: 20
+  echo: false  # Set to true for SQL query logging
+
+# Cache configuration
+cache:
+  enabled: true
+  redis_host: localhost
+  redis_port: 6379
+  redis_db: 0
+  ttl_seconds: 3600
+  max_memory_mb: 512
+
+# Analytics configuration
+analytics:
+  rfm_reference_date: null  # Use current date if null
+  cohort_periods: 12
+  ltv_prediction_months: 12
+  min_orders_for_analysis: 1
+  max_recency_days: 1095  # 3 years
+  
+  # RFM segment thresholds
+  segment_thresholds:
+    champion_r_min: 4
+    champion_f_min: 4
+    champion_m_min: 4
+    at_risk_r_max: 2
+    lost_r_max: 1
+  
+  # Data quality thresholds
+  data_quality:
+    max_null_percentage: 5.0
+    min_join_success_ratio: 0.95
+    max_future_orders_percentage: 1.0
+    min_customers_for_analysis: 100
+
+# Dashboard configuration
+dashboard:
+  host: 0.0.0.0
+  port: 8050
+  debug: false
+  auto_reload: false
+  workers: 1
+  
+  # UI settings
+  page_size: 50
+  max_chart_points: 10000
+  enable_export: true
+  
+  # Performance
+  enable_caching: true
+  cache_timeout: 300  # 5 minutes
+
+# Security settings
+security:
+  secret_key: "change-this-in-production"
+  jwt_expiry_hours: 24
+  allowed_hosts:
+    - localhost
+    - 127.0.0.1
+  enable_cors: false
+  cors_origins: []
+  
+  # Rate limiting
+  rate_limit:
+    enabled: true
+    requests_per_minute: 100
+    burst_limit: 200
+
+# Logging configuration
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: structured  # structured (JSON) or standard
+  enable_file_logging: true
+  file_rotation:
+    max_bytes: 10485760  # 10MB
+    backup_count: 5
+  
+  # Logger levels
+  loggers:
+    olist_analytics: INFO
+    sqlalchemy: WARNING
+    matplotlib: WARNING
+    plotly: WARNING
+
+# Data paths
+paths:
+  data_dir: data
+  outputs_dir: outputs
+  logs_dir: logs
+  cache_dir: .cache
+  exports_dir: exports
+
+# Performance settings
+performance:
+  # Pandas settings
+  pandas_display_max_rows: 1000
+  pandas_display_max_columns: 50
+  
+  # Computation settings
+  chunk_size: 10000
+  parallel_jobs: -1  # Use all available cores
+  memory_limit_gb: 4
+  
+  # Analysis timeouts
+  analysis_timeout_minutes: 30
+  dashboard_timeout_seconds: 60
+
+# Monitoring and alerting
+monitoring:
+  enable_metrics: true
+  metrics_endpoint: "/metrics"
+  health_check_endpoint: "/health"
+  
+  # Performance thresholds
+  thresholds:
+    analysis_duration_warning_seconds: 30
+    analysis_duration_error_seconds: 300
+    memory_usage_warning_percentage: 80
+    memory_usage_error_percentage: 95
+
+# Data export settings
+export:
+  formats:
+    - csv
+    - excel
+    - json
+    - parquet
+  
+  max_export_rows: 1000000
+  enable_compression: true
+  
+  # Email settings (optional)
+  email:
+    enabled: false
+    smtp_host: ""
+    smtp_port: 587
+    username: ""
+    password: ""  # Set via environment variable
+    from_email: ""
+
+# API settings (if enabled)
+api:
+  enabled: false
+  host: 0.0.0.0
+  port: 8000
+  workers: 4
+  
+  # API documentation
+  docs_enabled: true
+  docs_path: "/docs"
+  redoc_path: "/redoc"
+  
+  # Versioning
+  version: "v1"
+  prefix: "/api/v1"
+
+# Testing configuration
+testing:
+  test_data_size: 1000
+  enable_test_cache: true
+  mock_external_services: true
+  
+  # Test database (uses SQLite by default)
+  test_database:
+    type: sqlite
+    name: ":memory:"
+
+# Feature flags
+features:
+  enable_advanced_analytics: true
+  enable_real_time_updates: false
+  enable_ml_predictions: true
+  enable_data_profiling: true
+  enable_automated_insights: true
+  enable_a_b_testing: false
+
+# External integrations
+integrations:
+  # Google Analytics (optional)
+  google_analytics:
+    enabled: false
+    tracking_id: ""
+  
+  # Slack notifications (optional)
+  slack:
+    enabled: false
+    webhook_url: ""
+    channel: "#analytics"
+  
+  # Data sources
+  data_sources:
+    kaggle:
+      enabled: false
+      username: ""
+      key: ""  # Set via environment variable
+    
+    s3:
+      enabled: false
+      bucket: ""
+      access_key: ""  # Set via environment variable
+      secret_key: ""  # Set via environment variable
+      region: "us-east-1"

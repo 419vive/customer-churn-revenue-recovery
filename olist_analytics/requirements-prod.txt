@@ -1,0 +1,143 @@
+# Olist Analytics - Production Requirements
+# Pinned versions for production stability
+
+# Core Data Processing
+pandas==2.1.4
+numpy==1.25.2
+scipy==1.11.4
+
+# Database & ORM
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.7
+alembic==1.12.1  # Database migrations
+redis==5.0.1  # Caching
+
+# Machine Learning & Analytics
+scikit-learn==1.3.2
+lifetimes==0.11.3
+statsmodels==0.14.1
+
+# API Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+gunicorn==21.2.0  # Production WSGI server
+pydantic==2.5.2
+starlette==0.27.0
+
+# Visualization & Dashboard
+plotly==5.17.0
+matplotlib==3.8.2
+seaborn==0.13.0
+dash==2.14.2
+dash-table==5.0.0
+dash-bootstrap-components==1.5.0
+kaleido==0.2.1  # Static image export
+
+# Configuration & Environment
+python-dotenv==1.0.0
+pyyaml==6.0.1
+click==8.1.7
+typer==0.9.0  # Modern CLI framework
+
+# Data Validation & Quality
+great-expectations==0.18.8
+cerberus==1.3.5  # Schema validation
+jsonschema==4.20.0
+
+# Monitoring & Logging
+structlog==23.2.0  # Structured logging
+prometheus-client==0.19.0  # Metrics
+sentry-sdk[fastapi]==1.38.0  # Error tracking
+
+# Security & Authentication
+cryptography==41.0.8
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+python-multipart==0.0.6
+
+# Performance & Optimization
+numba==0.58.1  # JIT compilation
+modin[all]==0.22.3  # Parallel pandas (optional)
+dask[complete]==2023.12.1  # Distributed computing (optional)
+
+# File Formats & I/O
+pyarrow==14.0.2  # Parquet support
+h5py==3.10.0  # HDF5 support
+openpyxl==3.1.2  # Excel support
+xlsxwriter==3.1.9  # Excel writing
+
+# HTTP & Networking
+httpx==0.25.2
+requests==2.31.0
+urllib3==2.1.0
+
+# Development & Testing (for staging)
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-asyncio==0.21.1
+pytest-mock==3.12.0
+factory-boy==3.3.0  # Test data factories
+
+# Code Quality
+black==23.11.0  # Code formatting
+isort==5.12.0  # Import sorting
+flake8==6.1.0  # Linting
+mypy==1.7.1  # Type checking
+bandit==1.7.5  # Security linting
+
+# Documentation
+mkdocs==1.5.3
+mkdocs-material==9.4.14
+mkdocstrings[python]==0.24.0
+
+# Utilities
+tqdm==4.66.1
+rich==13.7.0  # Beautiful console output
+tenacity==8.2.3  # Retry utilities
+schedule==1.2.0  # Job scheduling
+cachetools==5.3.2  # Additional caching utilities
+
+# Data Science Notebook Support
+jupyter==1.0.0
+notebook==7.0.6
+jupyterlab==4.0.9
+ipykernel==6.27.1
+nbformat==5.9.2
+nbconvert==7.12.0
+
+# Workflow & Pipeline Tools
+apache-airflow==2.7.3  # Workflow orchestration
+celery==5.3.4  # Task queue
+kombu==5.3.4  # Message passing
+
+# Cloud & Deployment
+boto3==1.34.0  # AWS SDK
+azure-storage-blob==12.19.0  # Azure storage
+google-cloud-storage==2.10.0  # Google Cloud storage
+docker==6.1.3  # Docker integration
+
+# Geospatial (if needed for location analysis)
+# geopandas==0.14.1
+# folium==0.15.0
+
+# Time Series (if needed)
+# prophet==1.1.5
+# pmdarima==2.0.4
+
+# GPU Acceleration (optional)
+# cudf==23.12.0  # GPU DataFrame
+# cuml==23.12.0  # GPU ML
+# rapids-dependency-file-generator==1.12.0
+
+# Compliance & Audit
+audit-python-package==0.5.0  # Package auditing
+safety==2.3.5  # Vulnerability scanning
+
+# Memory & Performance Profiling
+memory-profiler==0.61.0
+line-profiler==4.1.1
+cProfile-tools==1.2.0
+
+# Rate Limiting & Throttling
+slowapi==0.1.9  # Rate limiting for FastAPI
+limits==3.6.0
