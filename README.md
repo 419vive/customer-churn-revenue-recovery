@@ -1,4 +1,8 @@
-# 🚀 Data Science Portfolio - Project 6
+# 🚀 Data Science Portfolio - Project 6 | 数据科学作品集 - 项目6
+
+*[English](#english) | [中文](#中文)*
+
+## English
 
 This repository showcases two comprehensive data science and software engineering projects demonstrating end-to-end development capabilities.
 
