@@ -1,4 +1,4 @@
-# 🚀 Data Science Portfolio - Brazilian E-commerse 
+# 🚀 Data Science Portfolio - Brazilian E-commerce 
 
 This repository showcases two comprehensive data science and software engineering projects demonstrating end-to-end development capabilities.
 
